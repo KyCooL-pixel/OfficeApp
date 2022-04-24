@@ -1,7 +1,7 @@
 import java.awt.*;
 import javax.swing.*;
 
-import Staff.Staff;
+import Staff.*;
 
 import java.awt.event.*;
 
@@ -9,6 +9,9 @@ public class Gui {
     // Config fonts and styles
     Font font = new Font("Arial", Font.CENTER_BASELINE, 20);
     Font font2 = new Font("Corona", Font.CENTER_BASELINE, 20);
+
+    // Initialize frame
+    JFrame frame1;
 
     // Initialize panels
     JTabbedPane tabbedPane = new JTabbedPane();
@@ -19,10 +22,18 @@ public class Gui {
     
     //declare staffpanel (panel2) and its components
     StaffPanel panel2 = new StaffPanel();
+    // searchbox : border
     JPanel topsearchbox;
     JTextField searchField;
     JButton searchButton;
     JButton addButton;
+    //displayzonepanel :
+    DisplayStaffPanel displayStaffPanel;
+    JLabel name_label;
+    JLabel title_label;
+    JLabel salary_label;
+    JLabel level_label;
+
 
     Staff currentStaff;
 
@@ -31,13 +42,13 @@ public class Gui {
     }
     public void buildGUI(){
         //setting up frame
-        JFrame frame1 = new JFrame("Test");
+        frame1 = new JFrame("Test");
         frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         //setting up background and its layout : borderlayout here
         BorderLayout layout = new BorderLayout();
         JPanel background = new JPanel(layout);
-        background.setBorder(BorderFactory.createEmptyBorder(0, 5, 5, 5));
+        background.setBorder(BorderFactory.createEmptyBorder(0, 2, 5, 2));
         background.setBounds(500, 100, 600, 600);
         Color bgColor = new Color(173,216,230);
         background.setBackground(bgColor);
@@ -109,13 +120,42 @@ public class Gui {
             topsearchbox.add(searchField);
             topsearchbox.add(searchButton);
             topsearchbox.add(addButton);
-    
+            
+            // setup displaypanel
+            displayStaffPanel = new DisplayStaffPanel();
             //add topbox to panel
             add(topsearchbox,BorderLayout.NORTH);
+            add(displayStaffPanel,BorderLayout.CENTER);
+            this.setBackground(Color.WHITE);
 
         }
     }
+    
+    // Subpanel (display panel ) of StaffPanel -> display selectedStaff info : Box ?
+    public class DisplayStaffPanel extends JPanel{
+        String na = " ----- ";
+        public DisplayStaffPanel(){
+            BoxLayout infoBox = new BoxLayout(this, BoxLayout.PAGE_AXIS);
+            setLayout(infoBox);
+            
+            // components of infoBox
+            name_label = new JLabel("Name : " + na);
+            title_label = new JLabel("Title : " + na);
+            add(name_label);
+            add(Box.createRigidArea(new Dimension(0,10)));
+            add(title_label);
+        }
+        // refresh the labels
+        public void setInfo(Staff staff){
+            name_label.setText("Name : " + staff.getName());
+            if(staff instanceof Educator){
+                Educator educator = (Educator) staff;
+                title_label.setText("Title : " + educator.getTitle());
+            }
 
+        }
+        
+    }
     public class searchFieldListener implements ActionListener{
 
         @Override
@@ -140,12 +180,16 @@ public class Gui {
         @Override
         public void actionPerformed(ActionEvent e) {
             String tempholder = searchField.getText();
-            for(Staff staff :Logic.getstaffs()){
-                if(staff.getName().equals(tempholder)){
-                    System.out.println("FOUND!!");
-                    currentStaff = staff;
-                    break;
-                } 
+            boolean isExist = Logic.checkStaffExist(tempholder);
+            if(isExist){
+                currentStaff = Logic.fetchStaff();
+                System.out.println(currentStaff);
+                System.out.println("FOUND !!");
+                // Refresh the staff info page
+                displayStaffPanel.setInfo(currentStaff);
+            }
+            else{
+                System.out.println("NOT IN THE SYSTEM ,PLS ADD IT NOW !");
             }
         }
     }
@@ -154,17 +198,13 @@ public class Gui {
         @Override
         public void actionPerformed(ActionEvent e) {
             String tempholder = searchField.getText();
-            boolean isExist = false;
-            for(Staff staff :Logic.getstaffs()){
-                if(staff.getName().equals(tempholder)){
-                    System.out.println("Already exist");
-                    isExist = true;
-                    break;
-                } 
-            }
+            boolean isExist = Logic.checkStaffExist(tempholder);
             if(!isExist){
                 Logic.addstaff(tempholder,2);
                 System.out.println("Is added!! do testing now!!");
+            }
+            else{
+                System.out.println("Already in the system !");
             }
         }
 
