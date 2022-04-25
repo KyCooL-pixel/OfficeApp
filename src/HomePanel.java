@@ -13,7 +13,7 @@ public class HomePanel extends JPanel {
         testButton =new JButton("Press me to test");
         text1 = new JTextArea("Hello my friends");
         add(text1,BorderLayout.NORTH);
-        add(testButton);
+        add(testButton,BorderLayout.NORTH);
 
     }
 

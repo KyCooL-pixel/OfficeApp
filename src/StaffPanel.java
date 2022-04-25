@@ -10,14 +10,18 @@ public class StaffPanel extends JPanel {
     DecimalFormat df = new DecimalFormat("0.00");
     
     JPanel topsearchbox;
+    JPanel bottomControlBox;
     JTextField searchField;
     JButton searchButton;
     JButton addButton;
+    JButton deleteButton;
+    JButton editButton;
 
     DisplayStaffPanel displayStaffPanel = new DisplayStaffPanel();
     
+    
     public StaffPanel(){
-        super();
+    
         BorderLayout layout = new BorderLayout();
         setLayout(layout);
         // setup topbox
@@ -30,7 +34,19 @@ public class StaffPanel extends JPanel {
         searchButton = new JButton("Search");
         addButton = new JButton("Add");
 
-    
+        // init bottomcontrolbox
+        bottomControlBox = new JPanel(new FlowLayout(FlowLayout.TRAILING));
+
+        //init components of bottomcontrolbox
+        deleteButton = new JButton("Delete");
+        deleteButton.setBackground(Color.RED);
+        editButton = new JButton("Edit");
+
+        // add to bottomcontrolbox
+        bottomControlBox.add(editButton);
+        bottomControlBox.add(deleteButton);
+        
+        
         //add components to topbox
         topsearchbox.add(searchField);
         topsearchbox.add(searchButton);
@@ -38,9 +54,11 @@ public class StaffPanel extends JPanel {
         
         // setup displaypanel
         displayStaffPanel = new DisplayStaffPanel();
-        //add topbox to panel
+
+        //add components to panel
         add(topsearchbox,BorderLayout.NORTH);
-        add(displayStaffPanel,BorderLayout.CENTER);
+        add(displayStaffPanel,BorderLayout.WEST);
+        add(bottomControlBox, BorderLayout.SOUTH);
         this.setBackground(Color.WHITE);
 
     }
@@ -59,6 +77,14 @@ public class StaffPanel extends JPanel {
 
     public JButton getAddButton(){
         return addButton;
+    }
+
+    public JButton getDeleteButton(){
+        return deleteButton;
+    }
+
+    public JButton getEditButton(){
+        return editButton;
     }
 
     public DisplayStaffPanel getDisplayStaffPanel(){

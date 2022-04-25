@@ -10,6 +10,9 @@ public class Logic {
         staffs.add(new Educator("Ali",2));
         staffs.add(new Educator("Abu",2));
         staffs.add(new Educator("Akao",2));
+        staffs.add(new Support("emily","Permanent"));
+        staffs.add(new Admin("brace"));
+        staffs.add(new Researcher("mia",5));
      }
 
      public static ArrayList<Staff> getstaffs(){

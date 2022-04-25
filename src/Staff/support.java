@@ -1,16 +1,21 @@
 package Staff;
 
-public class support extends NonAcademic{
-    private boolean isPermanent;
-    public support(String name,boolean isPermanent) {
+public class Support extends NonAcademic{
+    private String status;
+    private static String title;
+    public Support(String name,String status) {
         super(name);
-        this.setPermanent(isPermanent);
+        this.status = status;
+        title ="Support";
     }
-    public boolean isPermanent() {
-        return isPermanent;
+    public static String getTitle() {
+        return title;
     }
-    public void setPermanent(boolean isPermanent) {
-        this.isPermanent = isPermanent;
+    public void setStatus(String status) {
+        this.status =status;   
     }
-  
+
+    public String getStatus(){
+        return status;
+    }
 }

@@ -30,13 +30,10 @@ public class Gui {
     JTextField searchField;
     JButton searchButton;
     JButton addButton;
+    JButton deleteButton;
+    JButton editButton;
     //displayzonepanel :
     DisplayStaffPanel displayStaffPanel;
-    JLabel name_label;
-    JLabel title_label;
-    JLabel salary_label;
-    JLabel level_label;
-
 
     Staff currentStaff;
 
@@ -61,6 +58,8 @@ public class Gui {
         searchField = panel2.getSearchField();
         searchButton = panel2.getSearchButton();
         addButton = panel2.getAddButton();
+        deleteButton = panel2.getDeleteButton();
+        editButton = panel2.getEditButton();
         displayStaffPanel = panel2.getDisplayStaffPanel();
 
         //adding listeners for staffpanel components
@@ -69,6 +68,7 @@ public class Gui {
         searchField.addFocusListener(new searchFieldFocusListener());
         searchButton.addActionListener(new searchButtonListener());
         addButton.addActionListener(new addButtonListener());
+        deleteButton.addActionListener(new deleteButtonListener());
 
 
         // adding panels to tab pane
@@ -123,6 +123,7 @@ public class Gui {
     public class searchButtonListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
+            displayStaffPanel.setNull();
             String tempholder = searchField.getText();
             boolean isExist = Logic.checkStaffExist(tempholder);
             if(isExist){
@@ -141,20 +142,30 @@ public class Gui {
     public class addButtonListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
-            String tempholder = searchField.getText();
-            boolean isExist = Logic.checkStaffExist(tempholder);
-            if(!isExist){
-                // TODO do some actual adding here with JDialog requesting info
-                Logic.addstaff(tempholder,2);
-                System.out.println("Is added!! do testing now!!");
-            }
-            else{
-                System.out.println("Already in the system !");
-            }
+           new Addframe();
         }
 
     }
 
+    public class deleteButtonListener implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            // TODO Auto-generated method stub
+            System.out.println("Delete called !");
+            displayStaffPanel.setNull();
+            Logic.removestaff(currentStaff);
+            
+        }
+    }
+
+    public class editButtonListener implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            // TODO Auto-generated method stub
+            
+        }
+
+    }
     public class testListener implements ActionListener{
 
         @Override
