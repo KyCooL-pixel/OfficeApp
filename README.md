@@ -1,18 +1,18 @@
-## Getting Started
+# This is an OfficeApp designed for learning purpose:
+1) Polymorphism
+2) Gui
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+# The function of the OfficeApp currently have:
+1) Search staff by name, display info about the staff
+2) manually add staff (default staff now is level 2 educator)
 
-## Folder Structure
+# The OfficeApp consist of 4 parts:
+1) The staff package that describe the behaviour of staff and its subclasses
+2) Gui package (not yet packed ) that handles all Gui related events
+3) Logic package that handle business logic behind Gui
+4) App to load data ( under development ) then launches Gui and Logic
 
-The workspace contains two folders by default, where:
+# Instructions to use the OfficeApp:
+1)Simply run the App.java
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
-
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
-
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+# Note : some functions are filled with dummy methods or objects for development/testing purpose

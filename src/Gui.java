@@ -1,5 +1,6 @@
 import java.awt.*;
 import javax.swing.*;
+import java.text.DecimalFormat;
 
 import Staff.*;
 
@@ -9,6 +10,7 @@ public class Gui {
     // Config fonts and styles
     Font font = new Font("Arial", Font.CENTER_BASELINE, 20);
     Font font2 = new Font("Corona", Font.CENTER_BASELINE, 20);
+    DecimalFormat df = new DecimalFormat("0.00");
 
     // Initialize frame
     JFrame frame1;
@@ -19,6 +21,7 @@ public class Gui {
     // declare homepanel (panel1) and its components
     HomePanel panel1 = new HomePanel();
     JTextArea text1;
+    JButton button;
     
     //declare staffpanel (panel2) and its components
     StaffPanel panel2 = new StaffPanel();
@@ -53,7 +56,15 @@ public class Gui {
         Color bgColor = new Color(173,216,230);
         background.setBackground(bgColor);
         
+        //Pointing objects
+        button = panel1.getTestButton();
+        searchField = panel2.getSearchField();
+        searchButton = panel2.getSearchButton();
+        addButton = panel2.getAddButton();
+        displayStaffPanel = panel2.getDisplayStaffPanel();
+
         //adding listeners for staffpanel components
+        button.addActionListener(new testListener());
         searchField.addActionListener(new searchFieldListener());
         searchField.addFocusListener(new searchFieldFocusListener());
         searchButton.addActionListener(new searchButtonListener());
@@ -86,76 +97,9 @@ public class Gui {
         //show frame
         frame1.setVisible(true);
     }
-    // HomePanel class : P1
-    public class HomePanel extends JPanel {
-        public HomePanel(){
-            super();
-            BorderLayout layout = new BorderLayout();
-            setLayout(layout);
-            text1 = new JTextArea("Hello my friends");
-            text1.setFont(font);
-            add(text1,BorderLayout.NORTH);
-    
-        }
-    }
 
     // StaffPanel class : P2
-    public class StaffPanel extends JPanel {
-        public StaffPanel(){
-            super();
-            BorderLayout layout = new BorderLayout();
-            setLayout(layout);
-            // setup topbox
-            topsearchbox = new JPanel();
-            topsearchbox.setBackground(Color.LIGHT_GRAY);
-            
-            //set up components of topbox
-            searchField = new JTextField("Enter staff name here ( case sensitive ) ",25);
-            searchField.setFont(font2);
-            searchButton = new JButton("Search");
-            addButton = new JButton("Add");
     
-        
-            //add components to topbox
-            topsearchbox.add(searchField);
-            topsearchbox.add(searchButton);
-            topsearchbox.add(addButton);
-            
-            // setup displaypanel
-            displayStaffPanel = new DisplayStaffPanel();
-            //add topbox to panel
-            add(topsearchbox,BorderLayout.NORTH);
-            add(displayStaffPanel,BorderLayout.CENTER);
-            this.setBackground(Color.WHITE);
-
-        }
-    }
-    
-    // Subpanel (display panel ) of StaffPanel -> display selectedStaff info : Box ?
-    public class DisplayStaffPanel extends JPanel{
-        String na = " ----- ";
-        public DisplayStaffPanel(){
-            BoxLayout infoBox = new BoxLayout(this, BoxLayout.PAGE_AXIS);
-            setLayout(infoBox);
-            
-            // components of infoBox
-            name_label = new JLabel("Name : " + na);
-            title_label = new JLabel("Title : " + na);
-            add(name_label);
-            add(Box.createRigidArea(new Dimension(0,10)));
-            add(title_label);
-        }
-        // refresh the labels
-        public void setInfo(Staff staff){
-            name_label.setText("Name : " + staff.getName());
-            if(staff instanceof Educator){
-                Educator educator = (Educator) staff;
-                title_label.setText("Title : " + educator.getTitle());
-            }
-
-        }
-        
-    }
     public class searchFieldListener implements ActionListener{
 
         @Override
@@ -200,12 +144,22 @@ public class Gui {
             String tempholder = searchField.getText();
             boolean isExist = Logic.checkStaffExist(tempholder);
             if(!isExist){
+                // TODO do some actual adding here with JDialog requesting info
                 Logic.addstaff(tempholder,2);
                 System.out.println("Is added!! do testing now!!");
             }
             else{
                 System.out.println("Already in the system !");
             }
+        }
+
+    }
+
+    public class testListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            System.out.println("Im called !!  time to refactor !!");
         }
 
     }
