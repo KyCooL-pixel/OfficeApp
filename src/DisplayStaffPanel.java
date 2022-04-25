@@ -10,7 +10,7 @@ import Staff.*;
 
 public class DisplayStaffPanel extends JPanel{
     String na = " ------------ ";
-    Font font = new Font("Arial", Font.CENTER_BASELINE, 16);
+    Font font = new Font("Arial", Font.CENTER_BASELINE, 14);
     Font font2 = new Font("Corona", Font.CENTER_BASELINE, 20);
     DecimalFormat df = new DecimalFormat("0.00");
 
@@ -20,6 +20,11 @@ public class DisplayStaffPanel extends JPanel{
     JLabel salary_label;
     JLabel level_label;
     JLabel status_label;
+    JLabel name;
+    JLabel title;
+    JLabel salary;
+    JLabel level;
+    JLabel status;
     
     
     public DisplayStaffPanel(){
@@ -27,70 +32,97 @@ public class DisplayStaffPanel extends JPanel{
         setLayout(infoBox);
         
         // components of infoBox
-        name_label = new JLabel("   Name :    " + na);
-        title_label = new JLabel("   Title :    " + na);
-        salary_label = new JLabel("   Total Salary :    " + na);
-        level_label = new JLabel("   Level :    " + na);
-        status_label =  new JLabel("   Status :    " + na);
+        name_label = new JLabel(na);
+        title_label = new JLabel(na);
+        salary_label = new JLabel(na);
+        level_label = new JLabel(na);
+        status_label =  new JLabel(na);
+
+        name = new JLabel("Name: ");
+        title = new JLabel("Title: ");
+        salary = new JLabel("Salary: ");
+        level = new JLabel("Level: ");
+        status = new JLabel("Status: ");
+    
+        JComponent[] staticComponents = {name,title,salary,level,status};
+        for(JComponent staticComp: staticComponents){
+            staticComp.setFont(font);
+        }
+
+        JComponent[] dynamicComponents = {name_label,title_label,salary_label,level_label,status_label};
+        for(JComponent dynamicComponent: dynamicComponents){
+            dynamicComponent.setFont(font2);
+            dynamicComponent.setForeground(Color.blue);
+        }
 
         // Grouping them together
-        JComponent[] components = {name_label,title_label,salary_label,level_label,status_label};
+        JComponent[] components = {
+            name,
+            name_label,
+            title,
+            title_label,
+            salary,
+            salary_label,
+            level,
+            level_label,
+            status,
+            status_label
+        };
 
         // Styling components
         // TODO should separate static label and actual attributes of staff
+        add(Box.createRigidArea(new Dimension(0,20)));
         for(JComponent component :components){
             component.setAlignmentX(Component.LEFT_ALIGNMENT);
             component.setMinimumSize(new Dimension(3000,30));
             component.setPreferredSize(new Dimension(5000,30));
-            component.setFont(font);
-            component.setForeground(Color.BLUE);
-            add(Box.createRigidArea(new Dimension(0,30)));
+            add(Box.createRigidArea(new Dimension(0,10)));
             add(component);
         }
     }
     // refresh the labels
     public void setInfo(Staff staff){
-        name_label.setText("    Name :    " + staff.getName());
+        name_label.setText(staff.getName());
         if(staff instanceof Educator){
             Educator educator = (Educator) staff;
-            title_label.setText("   Title :    " + educator.getTitle());
-            salary_label.setText("  Total Salary :    " + df.format(educator.getSalary()));
-            level_label.setText("   Level :    " + educator.getLevel());
-            status_label.setText("   Status :    " + "N/A");
+            title_label.setText(educator.getTitle());
+            salary_label.setText(df.format(educator.getSalary()));
+            level_label.setText(""+educator.getLevel());
+            status_label.setText( "N/A");
         }
         else if(staff instanceof Support){
             Support support = (Support) staff;
-            title_label.setText("   Title :    " + Support.getTitle());
-            salary_label.setText("   Total Salary :    " + df.format(support.getSalary()));
-            level_label.setText("   Level :    " + "N/A");
-            status_label.setText("   Status :    " + support.getStatus());
+            title_label.setText(Support.getTitle());
+            salary_label.setText(df.format(support.getSalary()));
+            level_label.setText("N/A");
+            status_label.setText(support.getStatus());
         }
 
         else if(staff instanceof Admin){
             Admin admin = (Admin) staff;
-            title_label.setText("   Title :    " + Admin.getTitle());
-            salary_label.setText("   Total Salary :    " + df.format(admin.getSalary()));
-            level_label.setText("   Level :    " + "N/A");
-            status_label.setText("   Status :    " + "N/A");
+            title_label.setText( Admin.getTitle());
+            salary_label.setText(df.format(admin.getSalary()));
+            level_label.setText( "N/A");
+            status_label.setText( "N/A");
         }
 
         else if(staff instanceof Researcher){
             Researcher researcher = (Researcher) staff;
-            title_label.setText("   Title :    " + researcher.getTitle());
-            salary_label.setText("  Total Salary :    " + df.format(researcher.getSalary()));
-            level_label.setText("   Level :    " + researcher.getLevel());
-            status_label.setText("   Status :    " + "N/A");
+            title_label.setText(researcher.getTitle());
+            salary_label.setText( df.format(researcher.getSalary()));
+            level_label.setText(""+ researcher.getLevel());
+            status_label.setText( "N/A");
 
         }
 
     }
 
     public void setNull(){
-        name_label.setText("   Name :    " + na);
-        title_label.setText("   Title :    " + na);
-        salary_label.setText("   Total Salary :    " + na);
-        level_label.setText("   Level :    " + na);
-        status_label.setText("   Status :    " + na);
+        name_label.setText(na);
+        title_label.setText(na);
+        salary_label.setText(na);
+        level_label.setText(na);
+        status_label.setText(na);
 
     }
     

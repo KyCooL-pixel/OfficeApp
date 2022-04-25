@@ -54,10 +54,13 @@ public class StaffPanel extends JPanel {
         
         // setup displaypanel
         displayStaffPanel = new DisplayStaffPanel();
+        JPanel panel = new JPanel();
+        panel.add(Box.createRigidArea(new Dimension(20,0)));
 
         //add components to panel
         add(topsearchbox,BorderLayout.NORTH);
-        add(displayStaffPanel,BorderLayout.WEST);
+        add(displayStaffPanel,BorderLayout.CENTER);
+        add(panel,BorderLayout.WEST);
         add(bottomControlBox, BorderLayout.SOUTH);
         this.setBackground(Color.WHITE);
 
