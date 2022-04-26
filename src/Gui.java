@@ -42,7 +42,7 @@ public class Gui {
     }
     public void buildGUI(){
         //setting up frame
-        frame1 = new JFrame("Test");
+        frame1 = new JFrame("OfficeApp");
         frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         //setting up background and its layout : borderlayout here

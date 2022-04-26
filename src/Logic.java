@@ -19,7 +19,9 @@ public class Logic {
          return staffs;
      }
 
-     public static void addstaff(String name,int level){
+     // take buildinfo arraylist, build and add
+     public static void addstaff(ArrayList<String> buildInfo){
+
      }
 
      public static void removestaff(Staff staff){

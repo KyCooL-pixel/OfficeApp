@@ -3,6 +3,7 @@ import javax.swing.event.InternalFrameEvent;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 
 public class Addframe extends JFrame {
     private static JDialog addDialog;
@@ -18,13 +19,15 @@ public class Addframe extends JFrame {
     private JLabel statusJLabel;
     private JComboBox<String> statusComboBox;
 
-    private String[] buildInfo;
+    
+
+    private ArrayList<String> buildInfo = new ArrayList<String>();
 
 
     private JPanel fillInPane;
-    String[] titles = {"Select a title","Educator","Researcher","Admin","Support"};
-    Integer[] level = {null,1,2,3,4,5};
-    String[] status = {null,"Permanent","Contract"};
+    String[] titles = {null,"Educator","Researcher","Admin","Support"};
+    Integer[] level = {1,2,3,4,5};
+    String[] status = {"Permanent","Contract"};
 
     public Addframe(){
         //setting up dialog
@@ -40,10 +43,10 @@ public class Addframe extends JFrame {
         saveButton = new JButton("SAVE");
 
         nameJLabel = new JLabel("Name: ");
-        nameTextField = new JTextField(15);
+        nameTextField = new JTextField(null,15);
 
         matricJLabel = new JLabel("Matric No: ");
-        matricTextField = new JTextField(15);
+        matricTextField = new JTextField(null,15);
 
         titJLabel = new JLabel("Title: ");
         tComboBox = new JComboBox<String>(titles);
@@ -103,8 +106,14 @@ public class Addframe extends JFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
             // TODO Extract info from the fields and pass to logic to add
-            System.out.println("Extract info from the fields and pass to logic to add");
-            addDialog.setVisible(false);
+            if(checkInfo()){
+                fetchInfo();
+                addDialog.setVisible(false);
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Please enter info correctly!!",
+                     "Wrong or Incomplete Info", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }
 
@@ -134,8 +143,40 @@ public class Addframe extends JFrame {
         }
     }
 
-    public String[] fetchInfo(){
+    public ArrayList<String> fetchInfo(){
         // TODO fetch the info from field and return to logic class for adding
+        buildInfo.add(nameTextField.getText());
+        buildInfo.add(matricTextField.getText());
+        buildInfo.add(tComboBox.getSelectedItem().toString());
+        if(tComboBox.getSelectedItem() == "Support")
+            buildInfo.add(statusComboBox.getSelectedItem().toString());
+        else
+            buildInfo.add(levelComboBox.getSelectedItem().toString());
+        
         return buildInfo;
+    }
+
+
+    // Check whether user input is correct
+    public boolean checkInfo(){
+        JComponent[] components = {
+            nameTextField,
+            matricTextField,
+            tComboBox,
+        };
+        if(!(statusComboBox.isEnabled()|| levelComboBox.isEnabled()))
+            return false;
+        for(JComponent component: components){
+            if(component instanceof JTextField){
+                JTextField text = (JTextField) component;
+                if(text.getText().length() <1)
+                    return false; 
+            }
+            else{
+                if(((JComboBox)component).getSelectedItem()==null)
+                    return false;
+            }
+        }
+        return true;
     }
 }
