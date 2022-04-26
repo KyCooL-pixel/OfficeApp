@@ -5,8 +5,8 @@ public class Academic extends Staff implements Salary{
     private double increment;
     private int level;
     private String title;
-    public Academic(String name, int level){
-        super(name);
+    public Academic(String name, String matric,int level){
+        super(name,matric);
         this.level = level;
         increment = 0;
     }

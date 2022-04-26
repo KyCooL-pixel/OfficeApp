@@ -9,15 +9,15 @@ public class StaffPanel extends JPanel {
     Font font2 = new Font("Corona", Font.CENTER_BASELINE, 20);
     DecimalFormat df = new DecimalFormat("0.00");
     
-    JPanel topsearchbox;
-    JPanel bottomControlBox;
-    JTextField searchField;
-    JButton searchButton;
-    JButton addButton;
-    JButton deleteButton;
-    JButton editButton;
+    private JPanel topsearchbox;
+    private JPanel bottomControlBox;
+    private JTextField searchField;
+    private JButton searchButton;
+    private JButton addButton;
+    private JButton deleteButton;
+    private JButton editButton;
 
-    DisplayStaffPanel displayStaffPanel = new DisplayStaffPanel();
+    private DisplayStaffPanel displayStaffPanel = new DisplayStaffPanel();
     
     
     public StaffPanel(){

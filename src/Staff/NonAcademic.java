@@ -3,8 +3,8 @@ package Staff;
 public class NonAcademic extends Staff implements Salary{
     private static double basic = 1500;
     private double increment;
-    public NonAcademic(String name){
-        super(name);
+    public NonAcademic(String name,String matric){
+        super(name,matric);
         increment =0;
     }
     @Override

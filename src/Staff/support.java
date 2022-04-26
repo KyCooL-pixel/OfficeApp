@@ -3,8 +3,8 @@ package Staff;
 public class Support extends NonAcademic{
     private String status;
     private static String title;
-    public Support(String name,String status) {
-        super(name);
+    public Support(String name,String matric,String status) {
+        super(name,matric);
         this.status = status;
         title ="Support";
     }

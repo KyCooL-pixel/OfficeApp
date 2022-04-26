@@ -7,12 +7,12 @@ public class Logic {
      private static int ref;
      public Logic(){
          // TODO remove these dummy objects later on, this is just doing the job of deserialisation
-        staffs.add(new Educator("Ali",2));
-        staffs.add(new Educator("Abu",2));
-        staffs.add(new Educator("Akao",2));
-        staffs.add(new Support("emily","Permanent"));
-        staffs.add(new Admin("brace"));
-        staffs.add(new Researcher("mia",5));
+        staffs.add(new Educator("Ali","A12345",2));
+        staffs.add(new Educator("Abu","A22345",2));
+        staffs.add(new Educator("Akao","A32345",2));
+        staffs.add(new Support("emily","A42345","Permanent"));
+        staffs.add(new Admin("brace","A52345", 5));
+        staffs.add(new Researcher("mia","A62345",5));
      }
 
      public static ArrayList<Staff> getstaffs(){
@@ -20,7 +20,6 @@ public class Logic {
      }
 
      public static void addstaff(String name,int level){
-         staffs.add(new Educator(name,level));
      }
 
      public static void removestaff(Staff staff){

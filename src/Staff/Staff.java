@@ -2,9 +2,19 @@ package Staff;
 
 public class Staff {
     private String name;
+    private String matric;
     
-    public Staff(String name){
+    public Staff(String name,String matric){
         this.name = name;
+        this.setMatric(matric);
+    }
+
+    public String getMatric() {
+        return matric;
+    }
+
+    public void setMatric(String matric) {
+        this.matric = matric;
     }
 
     public String getName(){

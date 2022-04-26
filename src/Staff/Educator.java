@@ -4,8 +4,8 @@ package Staff;
 public class Educator extends Academic{
     private static double allowance = 250;
     private static String title = "Educator";
-    public Educator(String name,int level) {
-        super(name,level);
+    public Educator(String name,String matric,int level) {
+        super(name,matric,level);
     }
 
     public double getSalary(){

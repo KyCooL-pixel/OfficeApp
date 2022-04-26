@@ -16,15 +16,19 @@ public class DisplayStaffPanel extends JPanel{
 
     DisplayStaffPanel displayStaffPanel;
     JLabel name_label;
+    JLabel matric_label;
     JLabel title_label;
     JLabel salary_label;
     JLabel level_label;
     JLabel status_label;
     JLabel name;
+    JLabel matric;
     JLabel title;
     JLabel salary;
     JLabel level;
     JLabel status;
+
+
     
     
     public DisplayStaffPanel(){
@@ -33,23 +37,27 @@ public class DisplayStaffPanel extends JPanel{
         
         // components of infoBox
         name_label = new JLabel(na);
+        matric_label = new JLabel(na);
         title_label = new JLabel(na);
         salary_label = new JLabel(na);
         level_label = new JLabel(na);
         status_label =  new JLabel(na);
 
         name = new JLabel("Name: ");
+        matric = new JLabel("Matric No: ");
         title = new JLabel("Title: ");
         salary = new JLabel("Salary: ");
         level = new JLabel("Level: ");
         status = new JLabel("Status: ");
-    
-        JComponent[] staticComponents = {name,title,salary,level,status};
+        
+        JComponent[] dynamicComponents = {name_label,matric_label,title_label,salary_label,level_label,status_label};
+        JComponent[] staticComponents = {name,matric,title,salary,level,status};
+        
         for(JComponent staticComp: staticComponents){
             staticComp.setFont(font);
         }
 
-        JComponent[] dynamicComponents = {name_label,title_label,salary_label,level_label,status_label};
+    
         for(JComponent dynamicComponent: dynamicComponents){
             dynamicComponent.setFont(font2);
             dynamicComponent.setForeground(Color.blue);
@@ -59,6 +67,8 @@ public class DisplayStaffPanel extends JPanel{
         JComponent[] components = {
             name,
             name_label,
+            matric,
+            matric_label,
             title,
             title_label,
             salary,
@@ -83,6 +93,7 @@ public class DisplayStaffPanel extends JPanel{
     // refresh the labels
     public void setInfo(Staff staff){
         name_label.setText(staff.getName());
+        matric_label.setText(staff.getMatric());
         if(staff instanceof Educator){
             Educator educator = (Educator) staff;
             title_label.setText(educator.getTitle());
@@ -118,11 +129,11 @@ public class DisplayStaffPanel extends JPanel{
     }
 
     public void setNull(){
-        name_label.setText(na);
-        title_label.setText(na);
-        salary_label.setText(na);
-        level_label.setText(na);
-        status_label.setText(na);
+        JComponent[] dynamicComponents = {name_label,matric_label,title_label,salary_label,level_label,status_label};
+        for(JComponent dynamicComponent: dynamicComponents){
+            ((JLabel) dynamicComponent).setText(na);
+
+        }
 
     }
     

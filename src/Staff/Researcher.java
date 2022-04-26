@@ -3,8 +3,8 @@ package Staff;
 public class Researcher extends Academic {
     private double allowance = 500;
     private static String title = "Researcher";
-    public Researcher(String name,int level) {
-        super(name, level);
+    public Researcher(String name,String matric,int level) {
+        super(name,matric, level);
     }
 
     public double getSalary(){
