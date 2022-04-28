@@ -150,7 +150,6 @@ public class Gui {
     public class deleteButtonListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
-            // TODO Auto-generated method stub
             System.out.println("Delete called !");
             displayStaffPanel.setNull();
             Logic.removestaff(currentStaff);
@@ -161,8 +160,6 @@ public class Gui {
     public class editButtonListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
-            // TODO Auto-generated method stub
-            
         }
 
     }

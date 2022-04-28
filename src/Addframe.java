@@ -1,5 +1,4 @@
 import javax.swing.*;
-import javax.swing.event.InternalFrameEvent;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -95,19 +94,15 @@ public class Addframe extends JFrame {
         addDialog.add(fillInPane);
         addDialog.setLocation(600, 200);
         addDialog.setSize(350,400);
-        addDialog.setVisible(true);
-
-        
-        
+        addDialog.setVisible(true);   
     }
-
-
+    
     public class saveListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
             // TODO Extract info from the fields and pass to logic to add
             if(checkInfo()){
-                fetchInfo();
+                Logic.addstaff(fetchInfo());
                 addDialog.setVisible(false);
             }
             else{
@@ -121,7 +116,6 @@ public class Addframe extends JFrame {
 
         @Override
         public void itemStateChanged(ItemEvent e) {
-            // TODO Auto-generated method stub
             if (e.getStateChange() == ItemEvent.SELECTED) {
                 if(tComboBox.getSelectedItem() == "Support"){
                     statusComboBox.setEnabled(true);
@@ -173,7 +167,7 @@ public class Addframe extends JFrame {
                     return false; 
             }
             else{
-                if(((JComboBox)component).getSelectedItem()==null)
+                if(((JComboBox<String>)component).getSelectedItem()==null)
                     return false;
             }
         }

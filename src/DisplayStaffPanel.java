@@ -80,7 +80,6 @@ public class DisplayStaffPanel extends JPanel{
         };
 
         // Styling components
-        // TODO should separate static label and actual attributes of staff
         add(Box.createRigidArea(new Dimension(0,20)));
         for(JComponent component :components){
             component.setAlignmentX(Component.LEFT_ALIGNMENT);

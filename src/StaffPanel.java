@@ -6,7 +6,7 @@ import java.text.DecimalFormat;
 
 public class StaffPanel extends JPanel {
     Font font = new Font("Arial", Font.CENTER_BASELINE, 20);
-    Font font2 = new Font("Corona", Font.CENTER_BASELINE, 20);
+    Font font2 = new Font("Corona", Font.CENTER_BASELINE, 15);
     DecimalFormat df = new DecimalFormat("0.00");
     
     private JPanel topsearchbox;
@@ -29,7 +29,7 @@ public class StaffPanel extends JPanel {
         topsearchbox.setBackground(Color.LIGHT_GRAY);
         
         //set up components of topbox
-        searchField = new JTextField("Enter staff name here ( case sensitive ) ",25);
+        searchField = new JTextField("Search by Name/Matric ",25);
         searchField.setFont(font2);
         searchButton = new JButton("Search");
         addButton = new JButton("Add");
