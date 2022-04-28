@@ -29,7 +29,7 @@ public class StaffPanel extends JPanel {
         topsearchbox.setBackground(Color.LIGHT_GRAY);
         
         //set up components of topbox
-        searchField = new JTextField("Search by Name/Matric ",25);
+        searchField = new JTextField("Search by Name/Matric ",20);
         searchField.setFont(font2);
         searchButton = new JButton("Search");
         addButton = new JButton("Add");
