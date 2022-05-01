@@ -60,7 +60,7 @@ public class DisplayStaffPanel extends JPanel{
     
         for(JComponent dynamicComponent: dynamicComponents){
             dynamicComponent.setFont(font2);
-            dynamicComponent.setForeground(Color.blue);
+            dynamicComponent.setForeground(Color.darkGray);
         }
 
         // Grouping them together
@@ -85,9 +85,11 @@ public class DisplayStaffPanel extends JPanel{
             component.setAlignmentX(Component.LEFT_ALIGNMENT);
             component.setMinimumSize(new Dimension(3000,30));
             component.setPreferredSize(new Dimension(5000,30));
-            add(Box.createRigidArea(new Dimension(0,10)));
             add(component);
+            add(Box.createRigidArea(new Dimension(0,5)));
         }
+
+        setBackground(Color.WHITE);
     }
     // refresh the labels
     public void setInfo(Staff staff){

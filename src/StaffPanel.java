@@ -1,7 +1,11 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.text.DecimalFormat;
 
 public class StaffPanel extends JPanel {
@@ -56,6 +60,18 @@ public class StaffPanel extends JPanel {
         displayStaffPanel = new DisplayStaffPanel();
         JPanel panel = new JPanel();
         panel.add(Box.createRigidArea(new Dimension(20,0)));
+        panel.setBackground(Color.WHITE);
+
+        // Adding pic
+        try {
+            BufferedImage officepic = ImageIO.read(new File("D:/My_Projects/OfficeApp/r/staff.png"));
+            JLabel piclabel = new JLabel(new ImageIcon(officepic.getScaledInstance(200, 200, Image.SCALE_FAST)));
+
+            add(piclabel,BorderLayout.EAST);
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
 
         //add components to panel
         add(topsearchbox,BorderLayout.NORTH);

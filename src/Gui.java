@@ -89,7 +89,7 @@ public class Gui {
         frame1.getContentPane().add(background);
 
         //set bounds for frame
-        frame1.setBounds(500,100,500 ,500);
+        frame1.setBounds(500,100,500 ,585);
         
         //pack
         //frame1.pack();
