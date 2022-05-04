@@ -12,7 +12,7 @@ import Staff.*;
 public class DisplayStaffPanel extends JPanel{
     String na = " ------------ ";
     Font font = new Font("Arial", Font.CENTER_BASELINE, 14);
-    Font font2 = new Font("Corona", Font.CENTER_BASELINE, 20);
+    Font font2 = new Font("Serif", Font.CENTER_BASELINE, 20);
     DecimalFormat df = new DecimalFormat("0.00");
 
     DisplayStaffPanel displayStaffPanel;
@@ -56,6 +56,7 @@ public class DisplayStaffPanel extends JPanel{
         
         for(JComponent staticComp: staticComponents){
             staticComp.setFont(font);
+            staticComp.setForeground(Color.RED);
         }
 
     

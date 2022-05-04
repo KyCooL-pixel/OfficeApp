@@ -8,7 +8,7 @@ public class Researcher extends Academic {
     }
 
     public double getSalary(){
-        return allowance + super.getSalary();
+        return allowance + super.getSalary() + super.getLevel()*1000;
     }
 
     public String getTitle(){

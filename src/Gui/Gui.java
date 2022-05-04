@@ -91,7 +91,7 @@ public class Gui {
         frame1.getContentPane().add(background);
 
         //set bounds for frame
-        frame1.setBounds(500,100,500 ,585);
+        frame1.setBounds(500,100,500 ,590);
         
         //pack
         //frame1.pack();
@@ -154,7 +154,8 @@ public class Gui {
         public void actionPerformed(ActionEvent e) {
             System.out.println("Delete called !");
             displayStaffPanel.setNull();
-            Logic.removestaff(currentStaff);     
+            if(Logic.removestaff(currentStaff))
+                HomePanel.refresh();     
         }
     }
 
@@ -168,7 +169,8 @@ public class Gui {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println("Im called !!  time to refactor !!");
+            HomePanel.flip();
+            HomePanel.OnOffTheme();
         }
     }
 }

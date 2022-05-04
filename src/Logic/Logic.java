@@ -42,8 +42,13 @@ public class Logic {
          }
      }
 
-     public static void removestaff(Staff staff){
-         staffs.remove(staff);
+     public static boolean removestaff(Staff staff){
+        int before = staffs.size(); 
+        staffs.remove(staff);
+        if(before==staffs.size())
+            return false;
+        return true;
+         
      }
     
      public static boolean checkStaffExist(String name){
@@ -58,5 +63,9 @@ public class Logic {
 
     public static Staff fetchStaff(){
         return staffs.get(ref);
+    }
+
+    public static int getTotal() {
+        return staffs.size();
     }
 }
