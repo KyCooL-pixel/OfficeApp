@@ -1,9 +1,11 @@
+package Gui;
 import java.awt.*;
 import javax.swing.*;
+
+import Logic.Logic;
+
 import java.text.DecimalFormat;
-
 import Staff.*;
-
 import java.awt.event.*;
 
 public class Gui {
@@ -152,8 +154,7 @@ public class Gui {
         public void actionPerformed(ActionEvent e) {
             System.out.println("Delete called !");
             displayStaffPanel.setNull();
-            Logic.removestaff(currentStaff);
-            
+            Logic.removestaff(currentStaff);     
         }
     }
 
@@ -161,14 +162,13 @@ public class Gui {
         @Override
         public void actionPerformed(ActionEvent e) {
         }
-
     }
+
     public class testListener implements ActionListener{
 
         @Override
         public void actionPerformed(ActionEvent e) {
             System.out.println("Im called !!  time to refactor !!");
         }
-
     }
 }

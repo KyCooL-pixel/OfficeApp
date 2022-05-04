@@ -1,3 +1,4 @@
+package Gui;
 import java.text.DecimalFormat;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -124,9 +125,7 @@ public class DisplayStaffPanel extends JPanel{
             salary_label.setText( df.format(researcher.getSalary()));
             level_label.setText(""+ researcher.getLevel());
             status_label.setText( "N/A");
-
         }
-
     }
 
     public void setNull(){

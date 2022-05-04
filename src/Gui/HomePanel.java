@@ -1,3 +1,4 @@
+package Gui;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.image.BufferedImage;
@@ -32,6 +33,7 @@ public class HomePanel extends JPanel {
 
         JLabel text = new JLabel("OfficeApp by Team2");
         text.setAlignmentX(Component.CENTER_ALIGNMENT);
+        topPanel.add(Box.createRigidArea(new Dimension(0,30)));
         topPanel.add(text);
         add(topPanel,BorderLayout.NORTH);
        
