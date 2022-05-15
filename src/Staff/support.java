@@ -7,6 +7,7 @@ public class Support extends NonAcademic{
         super(name,matric);
         this.status = status;
         title ="Support";
+        checkOffice();
     }
     public static String getTitle() {
         return title;
@@ -17,5 +18,9 @@ public class Support extends NonAcademic{
 
     public String getStatus(){
         return status;
+    }
+
+    public void checkOffice(){
+        setOffice("Low");
     }
 }

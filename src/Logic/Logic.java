@@ -3,18 +3,36 @@ package Logic;
 import java.util.ArrayList;
 
 import Staff.*;
+import Office.*;
 
 public class Logic {
     static ArrayList<Staff> staffs = new ArrayList<>();
+    static ArrayList<Office> offices = new ArrayList<>();
+    private static Staff newStaff;
      private static int ref;
      public Logic(){
-         // TODO remove these dummy objects later on, this is just doing the job of deserialisation
+         // Setting up dummy Staff
         staffs.add(new Educator("Ali","A12345",2));
         staffs.add(new Educator("Abu","A22345",2));
         staffs.add(new Educator("Akao","A32345",2));
         staffs.add(new Support("emily","A42345","Permanent"));
         staffs.add(new Admin("brace","A52345", 5));
         staffs.add(new Researcher("mia","A62345",5));
+
+        //setting up offices, one for each cat
+        offices.add(new LowOffice(20));
+        offices.add(new MidOffice(10));
+        offices.add(new HighOffice(5));
+
+        // Putting staff into offices
+        for(Staff staff:staffs){
+            switch(staff.getOffice()){
+                case "Low": offices.get(0).newStaff(staff); break;
+                case "Mid": offices.get(1).newStaff(staff); break;
+                case "High": offices.get(2).newStaff(staff); break;
+            }
+        }
+
      }
 
      public static ArrayList<Staff> getstaffs(){
@@ -40,6 +58,10 @@ public class Logic {
             default:
                 System.out.println("An error occured....");
          }
+
+         newStaff = staffs.get(staffs.size()-1);
+         newOfficeStaff(newStaff);
+
      }
 
      public static boolean removestaff(Staff staff){
@@ -67,5 +89,17 @@ public class Logic {
 
     public static int getTotal() {
         return staffs.size();
+    }
+
+    public static void newOfficeStaff(Staff staff){
+        switch(staff.getOffice()){
+            case "Low": offices.get(0).newStaff(staff); break;
+            case "Mid": offices.get(1).newStaff(staff); break;
+            case "High": offices.get(2).newStaff(staff); break;
+        }
+    }
+
+    public static Office fetchOffice(int ref){
+        return offices.get(ref);
     }
 }

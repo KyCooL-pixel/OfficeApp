@@ -37,6 +37,13 @@ public class Gui {
     //displayzonepanel :
     DisplayStaffPanel displayStaffPanel;
 
+
+    //declare OfficePanel (panel3) and its components
+    OfficePanel panel3 = new OfficePanel();
+    JCheckBox low;
+    JCheckBox mid;
+    JCheckBox high;
+
     Staff currentStaff;
 
     public static void main(String[] args){
@@ -63,6 +70,9 @@ public class Gui {
         deleteButton = panel2.getDeleteButton();
         editButton = panel2.getEditButton();
         displayStaffPanel = panel2.getDisplayStaffPanel();
+        low = panel3.getLowBox();
+        mid = panel3.getMidBox();
+        high = panel3.getHighBox();
 
         //adding listeners for staffpanel components
         button.addActionListener(new testListener());
@@ -71,11 +81,15 @@ public class Gui {
         searchButton.addActionListener(new searchButtonListener());
         addButton.addActionListener(new addButtonListener());
         deleteButton.addActionListener(new deleteButtonListener());
+        low.addActionListener(new lowlistener());
+        mid.addActionListener(new midlistener());
+        high.addActionListener(new highlistener());
 
 
         // adding panels to tab pane
         tabbedPane.add("    Home    ",panel1);
         tabbedPane.add("    Staff   ", panel2);
+        tabbedPane.add("   Office   ", panel3);
 
         // Configure tabbedPane
         tabbedPane.setBackgroundAt(0,Color.WHITE);
@@ -155,7 +169,8 @@ public class Gui {
             System.out.println("Delete called !");
             displayStaffPanel.setNull();
             if(Logic.removestaff(currentStaff))
-                HomePanel.refresh();     
+                HomePanel.refresh();   
+              
         }
     }
 
@@ -171,6 +186,30 @@ public class Gui {
         public void actionPerformed(ActionEvent e) {
             HomePanel.flip();
             HomePanel.OnOffTheme();
+        }
+    }
+
+    public class lowlistener implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            // TODO Auto-generated method stub
+            OfficePanel.refresh();
+        }
+    }
+
+    public class midlistener implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            // TODO Auto-generated method stub
+            OfficePanel.refresh();
+        }
+    }
+
+    public class highlistener implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            // TODO Auto-generated method stub
+            OfficePanel.refresh();
         }
     }
 }

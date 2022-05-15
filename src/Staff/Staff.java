@@ -3,6 +3,7 @@ package Staff;
 public class Staff {
     private String name;
     private String matric;
+    private String office;
     
     public Staff(String name,String matric){
         this.name = name;
@@ -25,6 +26,16 @@ public class Staff {
         this.name = name;
     }
 
+    public void setOffice(String office){
+        this.office = office;
+    }
 
+    public void checkOffice(){
+    }
+
+    public String getOffice(){
+        return office;
+    }
+    
     
 }

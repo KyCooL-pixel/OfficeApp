@@ -7,6 +7,7 @@ public class Admin extends NonAcademic {
     public Admin(String name,String matric,int level) {
         super(name,matric);
         this.setLevel(level);
+        checkOffice(level);
     }
 
 
@@ -26,5 +27,14 @@ public class Admin extends NonAcademic {
 
     public double getSalary() {
         return super.getSalary() + stocks + 1000*level;
+    }
+
+    public void checkOffice(int level){
+        if(level > 3)
+            setOffice("High");
+        else if(level > 1)
+            setOffice("Mid");
+        else
+            setOffice("Low");
     }
 }
