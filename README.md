@@ -20,5 +20,5 @@
 3) Run the App.java file
 
 # Note 
-for demo purposes, some dummy staffs are initiated inside logic class
-User is recommended to use the default window size (do not maximize or adjust the size manually) to have the best user experience
+1) For demo purposes, some dummy staffs are initiated inside logic class
+2) User is recommended to use the default window size (do not maximize or adjust the size manually) to have the best user experience
