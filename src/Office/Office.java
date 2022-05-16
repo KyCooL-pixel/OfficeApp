@@ -1,4 +1,5 @@
 package Office;
+
 import Staff.*;
 
 public class Office {
@@ -12,7 +13,8 @@ public class Office {
     }
 
     public void newStaff(Staff staff){
-        officestaffs[occupied++] = staff;
+        if(occupied<capacity-1)
+            officestaffs[occupied++] = staff;
     }
 
     public Office newOffice(){
@@ -29,5 +31,12 @@ public class Office {
 
     public Staff[] getStaffs(){
         return officestaffs;
+    }
+
+    public void clearOffice(){
+        for(int i =0;i< capacity;i++){
+            officestaffs[i] = null;
+        }
+        occupied =0;
     }
 }
