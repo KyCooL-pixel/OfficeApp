@@ -6,13 +6,15 @@
 1) Search staff by name / matric number and view info
 2) Add staff
 3) Delete existing staff
-4) Toggle between light and dark theme (for homepage)
+4) Show staff list according to offices
+5) Toggle between light and dark theme (for homepage)
 
 # The OfficeApp consist of 4 parts:
 1) The staff package that describe the behaviour of staff and its subclasses
 2) Gui package that handles all Gui related events
 3) Logic package that handle business logic behind Gui
-4) App that launches Gui and Logic
+4) Office package that describe different leve of office (only capacity matters now though)
+5) App that launches Gui and Logic
 
 # Instructions to use the OfficeApp:
 1) Make sure the whole OfficeApp package is downloaded completely
