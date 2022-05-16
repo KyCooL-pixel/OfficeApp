@@ -25,13 +25,7 @@ public class Logic {
         offices.add(new HighOffice(5));
 
         // Putting staff into offices
-        for(Staff staff:staffs){
-            switch(staff.getOffice()){
-                case "Low": offices.get(0).newStaff(staff); break;
-                case "Mid": offices.get(1).newStaff(staff); break;
-                case "High": offices.get(2).newStaff(staff); break;
-            }
-        }
+        fillOfficeStaff(staffs);
 
      }
 
@@ -67,6 +61,8 @@ public class Logic {
      public static boolean removestaff(Staff staff){
         int before = staffs.size(); 
         staffs.remove(staff);
+        clearAllOffice();
+        fillOfficeStaff(staffs);
         if(before==staffs.size())
             return false;
         return true;
@@ -99,7 +95,19 @@ public class Logic {
         }
     }
 
+    public static void fillOfficeStaff(ArrayList<Staff> staffs){
+        for(Staff staffie: staffs){
+            newOfficeStaff(staffie);
+        }
+    }
+
     public static Office fetchOffice(int ref){
         return offices.get(ref);
+    }
+
+    public static void clearAllOffice(){
+        for(Office office: offices){
+            office.clearOffice();
+        }
     }
 }

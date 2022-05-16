@@ -28,9 +28,6 @@ public class DisplayStaffPanel extends JPanel{
     JLabel salary;
     JLabel level;
     JLabel status;
-
-
-    
     
     public DisplayStaffPanel(){
         BoxLayout infoBox = new BoxLayout(this, BoxLayout.PAGE_AXIS);
@@ -116,7 +113,7 @@ public class DisplayStaffPanel extends JPanel{
             Admin admin = (Admin) staff;
             title_label.setText( Admin.getTitle());
             salary_label.setText(df.format(admin.getSalary()));
-            level_label.setText( "N/A");
+            level_label.setText(admin.getLevel()+"");
             status_label.setText( "N/A");
         }
 

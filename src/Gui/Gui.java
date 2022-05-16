@@ -151,6 +151,8 @@ public class Gui {
             }
             else{
                 System.out.println("NOT IN THE SYSTEM ,PLS ADD IT NOW !");
+                JOptionPane.showMessageDialog(null, "This Staff does not exist! Make sure name is correct or add new Staff",
+                "Error 404 NOT FOUND", JOptionPane.ERROR_MESSAGE);
             }
         }
     }
@@ -170,7 +172,11 @@ public class Gui {
             displayStaffPanel.setNull();
             if(Logic.removestaff(currentStaff))
                 HomePanel.refresh();   
-              
+            else
+                {JOptionPane.showMessageDialog(null, "This Staff does not exist! Make sure name is correct or add new Staff",
+                "Error 404 NOT FOUND", JOptionPane.ERROR_MESSAGE);
+            }
+
         }
     }
 
