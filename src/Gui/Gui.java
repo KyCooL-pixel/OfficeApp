@@ -140,7 +140,7 @@ public class Gui {
         @Override
         public void actionPerformed(ActionEvent e) {
             displayStaffPanel.setNull();
-            String tempholder = searchField.getText();
+            String tempholder = searchField.getText().trim();
             boolean isExist = Logic.checkStaffExist(tempholder);
             if(isExist){
                 currentStaff = Logic.fetchStaff();
@@ -170,8 +170,10 @@ public class Gui {
         public void actionPerformed(ActionEvent e) {
             System.out.println("Delete called !");
             displayStaffPanel.setNull();
-            if(Logic.removestaff(currentStaff))
-                HomePanel.refresh();   
+            if(Logic.removestaff(currentStaff)){
+                HomePanel.refresh();
+                OfficePanel.refresh();
+            }
             else
                 {JOptionPane.showMessageDialog(null, "This Staff does not exist! Make sure name is correct or add new Staff",
                 "Error 404 NOT FOUND", JOptionPane.ERROR_MESSAGE);

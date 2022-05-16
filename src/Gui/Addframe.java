@@ -122,6 +122,7 @@ public class Addframe extends JFrame {
                 Logic.addstaff(fetchInfo());
                 addDialog.setVisible(false);
                 HomePanel.refresh();
+                OfficePanel.refresh();
             }
             else{
                 JOptionPane.showMessageDialog(null, "Please enter info correctly!!",
