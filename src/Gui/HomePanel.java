@@ -37,11 +37,11 @@ public class HomePanel extends JPanel {
         try {
 
             // load pic
-            BufferedImage moonpic = ImageIO.read(new File("D:/My_Projects/OfficeApp/r/moon.png"));
+            BufferedImage moonpic = ImageIO.read(new File("r/moon.png"));
             moonlabel = new JLabel(new ImageIcon(moonpic.getScaledInstance(50, 50, Image.SCALE_FAST)));
-            BufferedImage officepic = ImageIO.read(new File("D:/My_Projects/OfficeApp/r/office.png"));
+            BufferedImage officepic = ImageIO.read(new File("r/office.png"));
             JLabel piclabel = new JLabel(new ImageIcon(officepic.getScaledInstance(300, 300, Image.SCALE_FAST)));
-            BufferedImage sunpic = ImageIO.read(new File("D:/My_Projects/OfficeApp/r/sun.png"));
+            BufferedImage sunpic = ImageIO.read(new File("r/sun.png"));
             sunlabel = new JLabel(new ImageIcon(sunpic.getScaledInstance(50, 50, Image.SCALE_FAST)));
             
             // Alignment
@@ -59,7 +59,6 @@ public class HomePanel extends JPanel {
             topPanel.add(sunlabel);
 
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
@@ -94,14 +93,13 @@ public class HomePanel extends JPanel {
         JPanel botpanel = new JPanel(new FlowLayout(FlowLayout.TRAILING));
 
         try {
-            BufferedImage refreshpic = ImageIO.read(new File("D:/My_Projects/OfficeApp/r/dark.png"));
+            BufferedImage refreshpic = ImageIO.read(new File("r/dark.png"));
             testButton= new JButton(new ImageIcon(refreshpic.getScaledInstance(35, 35, Image.SCALE_FAST)));
             testButton.setAlignmentX(Component.CENTER_ALIGNMENT);
             testButton.setBackground(Color.WHITE);
 
             botpanel.add(testButton);
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 

@@ -178,7 +178,6 @@ public class Gui {
                 {JOptionPane.showMessageDialog(null, "This Staff does not exist! Make sure name is correct or add new Staff",
                 "Error 404 NOT FOUND", JOptionPane.ERROR_MESSAGE);
             }
-
         }
     }
 
@@ -200,7 +199,6 @@ public class Gui {
     public class lowlistener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
-            // TODO Auto-generated method stub
             OfficePanel.refresh();
         }
     }
@@ -208,7 +206,6 @@ public class Gui {
     public class midlistener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
-            // TODO Auto-generated method stub
             OfficePanel.refresh();
         }
     }
@@ -216,7 +213,6 @@ public class Gui {
     public class highlistener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
-            // TODO Auto-generated method stub
             OfficePanel.refresh();
         }
     }

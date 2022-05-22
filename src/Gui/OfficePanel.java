@@ -1,13 +1,10 @@
 package Gui;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
 import Logic.Logic;
 import Office.*;
-import Staff.*;
 
 import java.util.ArrayList;
 
@@ -35,28 +32,11 @@ public class OfficePanel extends JPanel {
         low = new JCheckBox("Low Office");
         mid = new JCheckBox("Mid Office");
         high = new JCheckBox("High Office");
+        
+        low.setSelected(true);
+        mid.setSelected(true);
+        high.setSelected(true);
 
-        low.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // TODO Auto-generated method stub
-                refresh();
-            }
-        });
-        mid.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // TODO Auto-generated method stub
-                refresh();
-            }
-        });
-        high.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // TODO Auto-generated method stub
-                refresh();
-            }
-        });
         topPanel.add(low);
         topPanel.add(mid);
         topPanel.add(high);
@@ -88,7 +68,7 @@ public class OfficePanel extends JPanel {
                     office.getStaffs()[i].getName()
                    +"               "
                     +office.getStaffs()[i].getMatric()
-                   +"              "
+                   +"               "
                    +office.getStaffs()[i].getOffice());
 
     }

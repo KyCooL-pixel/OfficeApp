@@ -64,12 +64,11 @@ public class StaffPanel extends JPanel {
 
         // Adding pic
         try {
-            BufferedImage officepic = ImageIO.read(new File("D:/My_Projects/OfficeApp/r/staff.png"));
+            BufferedImage officepic = ImageIO.read(new File("r/staff.png"));
             JLabel piclabel = new JLabel(new ImageIcon(officepic.getScaledInstance(200, 200, Image.SCALE_FAST)));
 
             add(piclabel,BorderLayout.EAST);
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
